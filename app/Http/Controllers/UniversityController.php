@@ -16,13 +16,13 @@ class UniversityController extends Controller
         $this->middleware('auth:university');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('university');
+    }
+    public function profile($id)
+    {
+        $university = universities::find($id);
+        return view('university.profile', ['university'=> $university]);
     }
 }

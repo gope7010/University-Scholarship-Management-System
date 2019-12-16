@@ -23,5 +23,7 @@ Route::get('/home', 'HomeController@index');
     Route::get('/login', 'Auth\UniversityLoginController@showLoginForm')->name('uni.login');
     Route::post('/login', 'Auth\UniversityLoginController@login')->name('uni.login.submit');
     Route::get('/', 'UniversityController@index')->name('uni.dashboard');
+    Route::get('/profile/{id}', 'UniversityController@profile')->name('university.profile');
+
 
   });

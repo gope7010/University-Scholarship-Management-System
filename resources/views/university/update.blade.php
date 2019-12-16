@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('uni')
 <!DOCTYPE html>
 <html>
@@ -47,15 +48,14 @@ body {
 <body>
 
 <div class="sidenav">
-  <a href="{{route('university.profile')}}">Profile</a>
+  <a href="#about">About</a>
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>
   <a href="#contact">Contact</a>
 </div>
 
 <div class="main">
-   $A= {{ Auth::user()->name }}
-   @yield('uni')
+  
 </div>  
 
 </body>
