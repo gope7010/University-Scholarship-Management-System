@@ -81,10 +81,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\University::class,
         ],
-         'books' => [
-            'driver' => 'eloquent',
-            'model' => App\Book::class,
-        ],
 
         // 'users' => [
         //     'driver' => 'database',

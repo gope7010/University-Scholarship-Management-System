@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('unihome');
+    return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+  Route::prefix('university')->group(function() {
+    Route::get('/login', 'Auth\UniversityLoginController@showLoginForm')->name('uni.login');
+    Route::post('/login', 'Auth\UniversityLoginController@login')->name('uni.login.submit');
+    Route::get('/', 'UniversityController@index')->name('uni.dashboard');
+
+  });
