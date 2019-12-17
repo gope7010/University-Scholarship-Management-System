@@ -47,7 +47,7 @@ body {
 <body>
 
 <div class="sidenav">
-  <a href="{{route('university.profile')}}">Profile</a>
+  <a href="{{route('university.profile', ['name' => Auth::user()->name])}}">Profile</a>
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>
   <a href="#contact">Contact</a>

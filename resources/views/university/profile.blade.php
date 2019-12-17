@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-{{university->id}}
+    {{$university->name}}
 </head>
 </html>
 @endsection
