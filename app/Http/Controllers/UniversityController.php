@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\University;
+use App\User;
 
 class UniversityController extends Controller
 {
@@ -25,7 +24,7 @@ class UniversityController extends Controller
     {
 
         $university = University::where('name',$name)->get();
-         print_r($university->id);
-        //return view('university.profile', ['university'=> $university]);
+        // print_r($name);
+        return view('university.profile', ['university'=> $university]);
     }
 }
