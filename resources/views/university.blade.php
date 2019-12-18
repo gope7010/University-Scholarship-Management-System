@@ -48,7 +48,7 @@ body {
 
 <div class="sidenav">
   <a href="{{route('university.profile', ['name' => Auth::user()->name])}}">Profile</a>
-  <a href="#services">Services</a>
+  <a href="{{route('offers.create', ['name' => Auth::user()->name])}}">Add An Offer</a>
   <a href="#clients">Clients</a>
   <a href="#contact">Contact</a>
 </div>
@@ -56,6 +56,7 @@ body {
 <div class="main">
   
    @yield('profile')
+   @yield('offers')
 </div>  
 
 </body>

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading" align="center"> <h3>University Information </h3> </div>
+                <div class="panel-heading" align="center"> <h3>Update University Information </h3> </div>
                 <div class="panel-body">
                        <form class="form-horizontal" role="form" method="POST" action="{{ route('profile.update') }}">
                         {{ csrf_field() }} {{ method_field('POST') }}
