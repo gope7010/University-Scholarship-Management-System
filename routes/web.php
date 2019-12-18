@@ -24,7 +24,9 @@ Route::get('/home', 'HomeController@index');
     Route::post('/login', 'Auth\UniversityLoginController@login')->name('uni.login.submit');
     Route::get('/', 'UniversityController@index')->name('uni.dashboard');
     Route::get('/profile/{name}', 'UniversityController@profile')->name('university.profile');
-    Route::get('/profile/edit', 'UniversityController@profile')->name('profile.edit');
+    Route::get('/profile/{name}/edit', 'UniversityController@edit')->name('profile.edit');
+    Route::post('/profile/update', 'UniversityController@update')->name('profile.update');
+
 
 
   });

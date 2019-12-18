@@ -26,10 +26,10 @@
                 <div class="panel-body">
                 <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-
-                                <button type="submit" class="btn btn-primary">
+                                <a class="btn btn-primary" href="{{ route('profile.edit', ['name' =>$university[0]->name]) }}">
                                     Update Your Profile
-                                </button>
+                                </a>
+
                             </div>
                         </div>
                          </div>

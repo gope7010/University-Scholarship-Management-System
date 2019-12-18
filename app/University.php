@@ -11,9 +11,7 @@ class University extends Authenticatable
 
     use Notifiable;
     protected $guard = 'university';
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password','address','mobile' ];
 
     /**
      * The attributes that should be hidden for arrays.

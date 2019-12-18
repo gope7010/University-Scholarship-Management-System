@@ -1,65 +1,64 @@
-@extends('layouts.app')
+@extends('university')
+@section('profile')
 
-@section('uni')
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
+    
+    <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading" align="center"> <h3>University Information </h3> </div>
+                <div class="panel-body">
+                       <form class="form-horizontal" role="form" method="POST" action="{{ route('profile.update') }}">
+                        {{ csrf_field() }} {{ method_field('POST') }}
 
-.sidenav {
-  width: 130px;
-  position: fixed;
-  z-index: 1;
-  top: 55px;
-  left: 10px;
-  background: #eee;
-  overflow-x: hidden;
-  padding: 8px 0;
-}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #2196F3;
-  display: block;
-}
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control" required value="{{$university[0]->name}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail_Address</label>
 
-.sidenav a:hover {
-  color: #064579;
-}
+                            <div class="col-md-6">
+                                <input type="text" name="email" class="form-control" required value="{{$university[0]->email}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Address</label>
 
-.main {
-  margin-left: 140px; /* Same width as the sidebar + left position in px */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
+                            <div class="col-md-6">
+                                <input type="text" name="address" class="form-control" required value="{{$university[0]->address}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mobile</label>
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-</head>
-<body>
+                            <div class="col-md-6">
+                                <input type="text" name="mobile" class="form-control" required value="{{$university[0]->mobile}}">
+                            </div>
+                        </div>
+                         <input type="hidden" name="id" value = "{{$university[0]->id}}">
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                   Update
+                                </button>
+                            </div>
+                        </div>
 
-<div class="sidenav">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Contact</a>
+                        
+                    </form> 
+          
+                </div>
+                </div>
+            </div>
+        </div>
 </div>
-
-<div class="main">
-  
-</div>  
-
-</body>
-</html> 
-
-
+</head>
+</html>
 @endsection
