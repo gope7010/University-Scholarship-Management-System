@@ -1,7 +1,4 @@
-    @extends('university')
-    @section('title','Offers Lists')
-    @section('offers')
-   
+
 <!DOCTYPE html>
 <html>
  <head>
@@ -28,6 +25,7 @@
          <th>Offer Name</th>
          <th>Pogram</th>
          <th>Waiver</th>
+         <th>Postby</th>
          
         </tr>
        </thead>
@@ -50,7 +48,7 @@ $(document).ready(function(){
  function fetch_offers_data(query = '')
  {
   $.ajax({
-   url:"{{ route('search') }}",
+   url:"{{ route('search.action') }}",
    method:'GET',
    data:{query:query},
    dataType:'json',
@@ -68,5 +66,3 @@ $(document).ready(function(){
  });
 });
 </script>
-
-    @endsection

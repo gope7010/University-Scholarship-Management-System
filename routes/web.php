@@ -39,9 +39,10 @@ Route::get('/home', 'HomeController@index');
     Route::post('/offers/edit/{id}','OfferController@update')->name('offers.update');
     Route::get('/offers/delete/{id}','OfferController@destroy')->name('offers.destroy');
 
+    Route::get('/offers/search', 'SearchController@autocomplete')->name('search');
 
-
-
+    Route::get('/search', 'SearchController@index')->name('search');
+    Route::get('/search/action', 'SearchController@action')->name('search.action');
 
 
   });
