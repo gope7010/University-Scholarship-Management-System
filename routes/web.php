@@ -30,12 +30,13 @@ Route::get('/home', 'HomeController@index');
     Route::get('/profile/{name}/edit', 'UniversityController@edit')->name('profile.edit');
     Route::post('/profile/update', 'UniversityController@update')->name('profile.update');
 
-    Route::get('/{name}/offers', 'OfferController@index')->name('university.offers');
+    Route::get('/{name}/offers', 'OfferController@index')->name('offers.index');
 
     Route::get('/{name}/offers/create','OfferController@create')->name('offers.create');
     Route::post('/{name}/offers/create','OfferController@store')->name('offers.store');
 
     Route::get('/offers/edit/{id}','OfferController@edit')->name('offers.edit');
+    Route::post('/offers/edit/{id}','OfferController@update')->name('offers.update');
     Route::get('/offers/delete/{id}','OfferController@destroy')->name('offers.destroy');
 
 

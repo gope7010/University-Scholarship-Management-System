@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Offer;
 use App\University;
-    class OfferController extends UniversityController
+    class OfferController extends Controller
     {
 
       public function __construct()
@@ -15,10 +15,10 @@ use App\University;
          *
          * @return \Illuminate\Http\Response
          */
-        public function index()
+        public function index($name)
         {
             //Show all employees from the database and return to view
-            $offers = Offer::all();
+            $offers = Offer::where('postby',$name)->get();
             return view('offers.index',['offers'=>$offers]);
         }
         /**
@@ -50,7 +50,7 @@ use App\University;
             $offers->waiver = $request->input('waiver');
             $offers->postby = $request->input('postby');
             $offers->save(); //persist the data
-            return redirect()->route('offers.index')->with('info','Offer Added Successfully');
+            return redirect()->route('offers.index', ['name'=>$request->input('postby')])->with('info','Offer Added Successfully');
         }
         /**
          * Show the form for editing the specified resource.
@@ -80,7 +80,7 @@ use App\University;
             $offers->waiver = $request->input('waiver');
             
             $offers->save(); //persist the data
-            return redirect()->route('offers.index')->with('info','Offer Updated Successfully');
+            return redirect()->route('offers.index',['name'=>$request->input('postby')])->with('info','Offer Updated Successfully');
         }
         /**
          * Remove the specified resource from storage.
@@ -90,10 +90,11 @@ use App\University;
          */
         public function destroy($id)
         {
-            //Retrieve the employee
+            $name = Offer::where('id',$id)->get();
             $offers = Offer::find($id);
+            //$university = University::where('name',$offers->postby)->get();
             //delete
             $offers->delete();
-            return redirect()->route('offers.index');
+            return redirect()->route('offers.index',['name'=>$name[0]->postby]);
         }
     }

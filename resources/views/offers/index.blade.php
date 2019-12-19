@@ -1,14 +1,14 @@
-    @extends('layouts.master')
+    @extends('university')
     @section('title','Offers Lists')
-    @section('content')
+    @section('offers')
       <div class="row">
         <div class="col-sm-12">
-          <table class="table">
-            <tr>
-              <th>ID</th>
-              <th>Offer Name</th>
-              <th>Program Students</th>
-              <th>Waiver Type</th>
+          <table class="table" class = "text-center">
+            <tr class = "text-center">
+              <th class = "text-center">ID</th>
+              <th class = "text-center">Offer Name</th>
+              <th class = "text-center">Program Students</th>
+              <th class = "text-center">Waiver Type</th>
             </tr>
             @foreach($offers as $offers)
               <tr class = "text-center">

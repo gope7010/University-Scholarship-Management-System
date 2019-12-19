@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Nunito", Nunito;
 }
 
 .sidenav {
-  width: 130px;
+  width: 160px;
   position: fixed;
   z-index: 1;
   top: 55px;
@@ -33,8 +33,8 @@ body {
 }
 
 .main {
-  margin-left: 140px; /* Same width as the sidebar + left position in px */
-  font-size: 16px; /* Increased text to enable scrolling */
+  margin-left: 160px; /* Same width as the sidebar + left position in px */
+  font-size: 18px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
 
@@ -48,8 +48,8 @@ body {
 
 <div class="sidenav">
   <a href="{{route('university.profile', ['name' => Auth::user()->name])}}">Profile</a>
-  <a href="{{route('offers.create', ['name' => Auth::user()->name])}}">Add An Offer</a>
-  <a href="#clients">Clients</a>
+  <a href="{{route('offers.create', ['name' => Auth::user()->name])}}">Add an Offer</a>
+  <a href="{{route('offers.index', ['name' => Auth::user()->name])}}">Your Offers</a>
   <a href="#contact">Contact</a>
 </div>
 
