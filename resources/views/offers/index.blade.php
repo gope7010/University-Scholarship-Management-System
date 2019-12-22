@@ -1,72 +1,40 @@
+  
     @extends('university')
     @section('title','Offers Lists')
     @section('offers')
-   
-<!DOCTYPE html>
-<html>
- <head>
-  <title>Live search in laravel using AJAX</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- </head>
- <body>
-  <br />
-  <div class="container box">
-   <h3 align="center">Live search in laravel using AJAX</h3><br />
-   <div class="panel panel-default">
-    <div class="panel-heading">Search Customer Data</div>
-    <div class="panel-body">
-     <div class="form-group">
-      <input type="text" name="search" id="search" class="form-control" placeholder="Search Customer Data" />
-     </div>
-     <div class="table-responsive">
-      <h3 align="center">Total Data : <span id="total_records"></span></h3>
-      <table class="table table-striped table-bordered">
-       <thead>
-        <tr>
-         <th>Offer Name</th>
-         <th>Pogram</th>
-         <th>Waiver</th>
-         
-        </tr>
-       </thead>
-       <tbody>
 
-       </tbody>
-      </table>
-     </div>
-    </div>    
-   </div>
-  </div>
- </body>
-</html>
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table" class = "text-center">
+            <tr class = "text-center">
+              <th class = "text-center">ID</th>
+              <th class = "text-center">Offer Name</th>
+              <th class = "text-center">Program </th>
+              
+              <th class = "text-center">Department </th>
+              <th class = "text-center">Session</th>
 
-<script>
-$(document).ready(function(){
+              <th class = "text-center">Waiver</th>
+              <th class = "text-center">Requirement</th>
+            </tr>
+            @foreach($offers as $offers)
+              <tr class = "text-center">
+                <td>{{ $offers->id }}</td>
+                <td>{{ $offers->name }}</td>
+                <td>{{ $offers->program }}</td>
+                <td>{{ $offers->department }}</td>
+                <td>{{ $offers->session }}</td>
+                <td>{{ $offers->waiver }}</td>
+                <td>{{ $offers->requirement }}</td>
 
- fetch_offers_data();
-
- function fetch_offers_data(query = '')
- {
-  $.ajax({
-   url:"{{ route('search') }}",
-   method:'GET',
-   data:{query:query},
-   dataType:'json',
-   success:function(data)
-   {
-    $('tbody').html(data.table_data);
-    $('#total_records').text(data.total_data);
-   }
-  })
- }
-
- $(document).on('keyup', '#search', function(){
-  var query = $(this).val();
-  fetch_offers_data(query);
- });
-});
-</script>
-
+                
+                <td><a href="{{route('offers.edit',['id'=>$offers->id])}}" class = "btn btn-info">Edit</a></td>
+                <td><a href="{{route('offers.destroy',['id'=>$offers->id])}}" class = "btn btn-danger">Delete</a></td>
+                
+                 <td><a href="{{route('download',['id'=>$offers->id])}}" class = "btn btn-info">Download</a></td>
+              </tr>
+            @endforeach
+          </table>
+        </div>
+      </div>
     @endsection

@@ -2,48 +2,160 @@
     @section('title','Update an Offer')
     @section('offers')
 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading" align="center"> <h3>Update Offer Information </h3> </div>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 
-      <div class="panel-body">
-      <div class="row">
-        <div class="col-sm-5 offset-sm-2">
-          <form action="{{route('offers.update',['id'=> $offers->id])}}" method = "post">
+label {
+  padding: 12px 12px 12px 12px;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 15px;
+  background-color: #f2f2f2;
+  padding: 6px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 60%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <form action="{{route('offers.update',['id'=> $offers->id])}}" method = "post">
             {{ csrf_field() }}
-            <div class="form-group">
-              <label for="name">Offer Name:</label>
-              <input type="text" name = "name" id = "name" class="form-control" required value = "{{$offers->name}}">
-            </div>
-            <div class="form-group">
-              <label for="program">Program Name:</label>
-              <select name = "program" id = "program" class="form-control" required value = "{{$offers->program}}">
-                     <option value="bsc">Undergraduate</option>
-                     <option value="msc">Postgraduate</option>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="name">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="name" name="name" placeholder="Offer name.." required value = "{{$offers->name}}" >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="program">Program</label>
+    </div>
+    <div class="col-75">
+      <select name = "program" id = "program" required value = "{{$offers->program}}">
+                     <option value="Undergraduate">Undergraduate</option>
+                     <option value="Postgraduate">Postgraduate</option>
                 </select> 
-            </div>
-            <div class="form-group">
-              <label for="waiver">Waiver:</label>
-              <select name = "waiver" id = "waiver" class="form-control" required value = "{{$offers->waiver}}">
-                     <option value="half">Half</option>
-                     <option value="full">Full</option>
-                </select>
-            </div>
-            <input type="hidden" name="id" value = "{{$offers->id}}">
-            <input type="hidden" name="postby" value = "{{$offers->postby}}">
-             <div class="form-group">
-              <div class="col-md-6 col-md-offset-4">
-            <button type = "submit" class = "btn btn-success" >Submit</button>
-          </div>
-        </div>
-          </form>
-        </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="department">Department</label>
+    </div>
+    <div class="col-75">
+      <select name = "department" id = "department" required value = "{{$offers->department}}">
+                     <option value="CSE">CSE</option>
+                     <option value="EEE">EEE</option>
+                     <option value="CSE">BBA</option>
+                     <option value="EEE">CSSE</option>
+                     <option value="CSE">SE</option>
+                     <option value="EEE">LAW</option>
+                </select> 
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-25">
+      <label for="session">Session</label>
+    </div>
+    <div class="col-75">
+      <select name = "session" id = "session" required value = "{{$offers->session}}">
+                     <option value="Spring">Spring</option>
+                     <option value="Summer">Summer</option>
+                     <option value="Fall">Fall</option>
+                     
+                </select> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="waiver">Waiver</label>
+    </div>
+    <div class="col-75">
+      <select name = "waiver" id = "waiver" required value = "{{$offers->waiver}}">
+                   
+                     <option value="100%">100%</option>
+                     <option value="75%">75%</option>
+                     <option value="50%">50%</option>
+                     
+                </select> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="requirement">Requirement</label>
+    </div>
+    <div class="col-75">
+      <textarea id="requirement" name="requirement"  style="height:200px" required value = "{{$offers->requirement}}"> {{$offers->requirement}}</textarea>
+    </div>
+  </div>
+  <input type="hidden" name="id" value = "{{$offers->id}}">
+  <input type="hidden" name="postby" value = "{{$offers->postby}}">
+  <div class="col-75">
+    <input type="submit" value="Submit">
+  </div>
+
+
+  </form>
+</div>
+</body>
+</html>
+
     @endsection

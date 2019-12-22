@@ -1,8 +1,9 @@
-
+ @extends('university')
+    @section('title','Offers Lists')
+    @section('offers')
 <!DOCTYPE html>
 <html>
  <head>
-  <title>Live search in laravel using AJAX</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -10,9 +11,7 @@
  <body>
   <br />
   <div class="container box">
-   <h3 align="center">Live search in laravel using AJAX</h3><br />
-   <div class="panel panel-default">
-    <div class="panel-heading">Search Customer Data</div>
+  <div class="panel panel-default">
     <div class="panel-body">
      <div class="form-group">
       <input type="text" name="search" id="search" class="form-control" placeholder="Search Customer Data" />
@@ -48,7 +47,7 @@ $(document).ready(function(){
  function fetch_offers_data(query = '')
  {
   $.ajax({
-   url:"{{ route('search.action') }}",
+   url:"{{ route('search.action',['name'=>'AIUB']) }}",
    method:'GET',
    data:{query:query},
    dataType:'json',
@@ -66,3 +65,4 @@ $(document).ready(function(){
  });
 });
 </script>
+ @endsection

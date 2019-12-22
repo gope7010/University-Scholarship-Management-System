@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Offer extends Authenticatable
+class Approved extends Authenticatable
 {
     use Notifiable;
     protected $guard = 'university';
-    protected $fillable = ['name', 'program', 'department','session','waiver','requirement','postby',];
+    protected $fillable = ['name', 'nuniversity', 'email','mobile','result',];
 
     /**
      * The attributes that should be hidden for arrays.

@@ -13,12 +13,12 @@ class UniversityLoginController extends Controller
       $this->middleware('guest:university');
     }
 
-    public function showLoginForm()
+    public function showUniversityLoginForm()
     {
       return view('auth.university-login');
     }
 
-    public function login(Request $request)
+    public function UniversityLogin(Request $request)
     {
       // Validate the form data
       $this->validate($request, [
@@ -29,7 +29,7 @@ class UniversityLoginController extends Controller
       // Attempt to log the user in
       if (Auth::guard('university')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('uni.dashboard'));
+        return redirect()->intended(route('university.dashboard'));
       }
 
       // if unsuccessful, then redirect back to the login with the form data

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body {
   font-family: "Nunito", Nunito;
@@ -47,16 +48,23 @@ body {
 <body>
 
 <div class="sidenav">
+   
   <a href="{{route('university.profile', ['name' => Auth::user()->name])}}">Profile</a>
   <a href="{{route('offers.create', ['name' => Auth::user()->name])}}">Add an Offer</a>
   <a href="{{route('offers.index', ['name' => Auth::user()->name])}}">Your Offers</a>
-  <a href="#contact">Contact</a>
+  <a href="{{route('applications', ['name' => Auth::user()->name])}}">Requests</a>
+
+  <a href="{{route('approved', ['name' => Auth::user()->name])}}">Approved</a>
+
+  <a href="{{route('app.rejects', ['name' => Auth::user()->name])}}">Rejected</a>
+ 
 </div>
 
 <div class="main">
   
    @yield('profile')
    @yield('offers')
+
 </div>  
 
 </body>

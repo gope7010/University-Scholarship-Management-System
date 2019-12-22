@@ -17,21 +17,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+   Route::get('/home', 'HomeController@index');
 
   Route::prefix('university')->group(function() {
 
-    Route::get('/login', 'Auth\UniversityLoginController@showLoginForm')->name('uni.login');
-    Route::post('/login', 'Auth\UniversityLoginController@login')->name('uni.login.submit');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/', 'UniversityController@index')->name('uni.dashboard');
+    Route::get('/login', 'Auth\UniversityLoginController@showUniversityLoginForm')->name('uni.login');
+    Route::post('/login', 'Auth\UniversityLoginController@UniversityLogin')->name('uni.login.submit');
+
+    Route::get('/', 'UniversityController@index')->name('university.dashboard');
 
     Route::get('/profile/{name}', 'UniversityController@profile')->name('university.profile');
     Route::get('/profile/{name}/edit', 'UniversityController@edit')->name('profile.edit');
     Route::post('/profile/update', 'UniversityController@update')->name('profile.update');
 
-    Route::get('/{name}/offers', 'OfferController@index')->name('offers.index');
 
+    Route::get('/{name}/offers', 'OfferController@index')->name('offers.index');
     Route::get('/{name}/offers/create','OfferController@create')->name('offers.create');
     Route::post('/{name}/offers/create','OfferController@store')->name('offers.store');
 
@@ -39,10 +41,29 @@ Route::get('/home', 'HomeController@index');
     Route::post('/offers/edit/{id}','OfferController@update')->name('offers.update');
     Route::get('/offers/delete/{id}','OfferController@destroy')->name('offers.destroy');
 
-    Route::get('/offers/search', 'SearchController@autocomplete')->name('search');
+    
+    Route::get('/{name}/requested', 'ApplicationController@index')->name('applications');
 
-    Route::get('/search', 'SearchController@index')->name('search');
-    Route::get('/search/action', 'SearchController@action')->name('search.action');
+
+    Route::get('/{name}/applications/approve/{id}', 'ApplicationController@approve')->name('application.approve');
+   
+    Route::get('/{name}/applications/reject/{id}', 'ApplicationController@reject')->name('app.reject');
+
+    Route::get('/{name}/rejected', 'ApplicationController@rejects')->name('app.rejects');
+    Route::get('/{name}/approved', 'ApplicationController@approved')->name('approved');
+
+
+     Route::get('/download/{id}', 'ApplicationController@downloadPDF')->name('download');
+
+
+
+
+
+
+
+
+    Route::get('/search', 'OfferController@search')->name('search');
+    Route::get('/{name}/search/action', 'SearchController@action')->name('search.action');
 
 
   });

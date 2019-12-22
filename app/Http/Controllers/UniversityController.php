@@ -18,7 +18,7 @@ class UniversityController extends Controller
 
     public function index()
     {
-        return view('university');
+        return view('homeuni');
     }
     public function profile($name)
     {

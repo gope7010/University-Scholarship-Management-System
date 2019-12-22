@@ -1,6 +1,7 @@
     @extends('layouts.master')
     @section('title','Employees Index')
     @section('content')
+    {{ csrf_field() }} {{ method_field('POST') }}
       <div class="row">
         <div class="col-sm-12">
           <table class="table">

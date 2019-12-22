@@ -9,7 +9,7 @@ class SearchController extends Controller
      return view('search');
     }
 
-    function action(Request $request)
+    function action(Request $request, $postby)
     {
      if($request->ajax())
      {
@@ -18,7 +18,8 @@ class SearchController extends Controller
       if($query != '')
       {
        $data = DB::table('offers')
-         ->where('name', 'like', '%'.$query.'%')
+         ->Where('postby',$postby)
+         ->Where('name', 'like', '%'.$query.'%')
          ->orWhere('program', 'like', '%'.$query.'%')
          ->orWhere('waiver', 'like', '%'.$query.'%')
          ->orWhere('postby', 'like', '%'.$query.'%')
@@ -29,7 +30,7 @@ class SearchController extends Controller
       }
       else
       {
-       $data = DB::table('offers')
+       $data = DB::table('offers')->where('postby',$postby)
          ->orderBy('id', 'desc')
          ->get();
       }
